@@ -46,11 +46,9 @@ public class MoreInfo extends DialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        Button pButton =  ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_POSITIVE);
-        Button nButton =  ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_NEGATIVE);
-        //pButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-        pButton.setTextColor(Color.BLACK);
-        //nButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-        nButton.setTextColor(Color.BLACK);
+        Button pozButton =  ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_POSITIVE);
+        Button negButton =  ((AlertDialog) getDialog()).getButton(DialogInterface.BUTTON_NEGATIVE);
+        pozButton.setTextColor(Color.BLACK);
+        negButton.setTextColor(Color.BLACK);
     }
 }

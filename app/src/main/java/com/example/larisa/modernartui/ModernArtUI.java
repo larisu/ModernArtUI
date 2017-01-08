@@ -21,12 +21,14 @@ public class ModernArtUI extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modern_art_ui);
 
+        //init 5 forms
         final LinearLayout cell1 = (LinearLayout)findViewById(R.id.cell1);
         final LinearLayout cell3 = (LinearLayout)findViewById(R.id.cell3);
         final LinearLayout cell5 = (LinearLayout)findViewById(R.id.cell5);
         final LinearLayout cell6 = (LinearLayout)findViewById(R.id.cell6);
         final LinearLayout cell7 = (LinearLayout)findViewById(R.id.cell7);
 
+        //get the color
         final int blueForm = ((ColorDrawable) cell1.getBackground()).getColor();
         final int yellowForm = ((ColorDrawable) cell3.getBackground()).getColor();
         final int redForm = ((ColorDrawable) cell5.getBackground()).getColor();
@@ -41,11 +43,11 @@ public class ModernArtUI extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 change = progress;
-                setProgressBasedBackgroundColor(cell1,blueForm);
-                setProgressBasedBackgroundColor(cell3,yellowForm);
-                setProgressBasedBackgroundColor(cell5,redForm);
-                setProgressBasedBackgroundColor(cell6,whiteForm);
-                setProgressBasedBackgroundColor(cell7,greenForm);
+                setColor(cell1,blueForm);
+                setColor(cell3,yellowForm);
+                setColor(cell5,redForm);
+                setColor(cell6,whiteForm);
+                setColor(cell7,greenForm);
             }
 
             @Override
@@ -58,7 +60,8 @@ public class ModernArtUI extends AppCompatActivity {
 
             }
 
-            private void setProgressBasedBackgroundColor(LinearLayout box, int OriginalBoxColor) {
+            //where the magic happens
+            private void setColor(LinearLayout box, int OriginalBoxColor) {
                 float[] hsvColor = new float[3];
                 Color.colorToHSV(OriginalBoxColor, hsvColor);
                 hsvColor[0] = hsvColor[0] + change;
@@ -85,7 +88,7 @@ public class ModernArtUI extends AppCompatActivity {
             //noinspection SimplifiableIfStatement
             if (id == R.id.action_more_info) {
                 DialogFragment moreInfoFragment = new MoreInfo();
-               // moreInfoFragment.show(FragmentManager this, moreInfoFragment);
+
                 moreInfoFragment.show(getSupportFragmentManager(), "moreInfo");
                 return true;
             }
